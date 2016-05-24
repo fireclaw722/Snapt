@@ -3,6 +3,9 @@ A portable BASH script to integrate the Debian/Ubuntu package manager, `aptitude
 
 ### Requirements
 * bash
+** or simalar shell
+*** zsh
+*** fish
 * aptitude
 * snapper
 
