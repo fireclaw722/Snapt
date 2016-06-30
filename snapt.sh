@@ -1,15 +1,18 @@
 #!/usr/bin/env bash
 
-#################### Variables ####################
+## Variables ##
 
 # Set first first arg[] as snapt <command>
 snaptcomm=$1
 
-#################### Functions ####################
+# Set Version Number
+version="v0.2.0"
+
+## Functions ##
 
 # Help Header
 helphead(){
-	echo "snapt v0.1.0"
+	echo $version
 	echo "Usage: snapt <command>"
 	echo ""
 	echo "Snapt is a script designed to run snapper and aptitude in conjunction"
@@ -22,6 +25,7 @@ helphead(){
 	echo " purge"
 	echo " remove"
 	echo " upgrade"
+	echo " version"
 	echo ""
 }
 
@@ -45,7 +49,7 @@ helpmsg() {
 	echo ""
 }
 
-#################### Script Start ####################
+## Script Start ##
 
 # Force non-error fails to return as error
 set -e
@@ -66,6 +70,10 @@ fi
 if [ $snaptcomm = "help" ]; then
 	helphead
 	helpmsg
+
+	exit
+elif [ condition ]; then
+	echo snapt $version
 
 	exit
 elif [ $snaptcomm = "install" ]; then
