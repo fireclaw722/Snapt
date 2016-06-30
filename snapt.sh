@@ -21,11 +21,12 @@ helphead(){
 	echo ""
 	echo "Available Commands:"
 	echo " help"
+	echo " version"
+	echo " search"
 	echo " install"
 	echo " purge"
 	echo " remove"
 	echo " upgrade"
-	echo " version"
 	echo ""
 }
 
@@ -34,6 +35,12 @@ helpmsg() {
 	echo "Snapt Command info:"
 	echo " help:"
 	echo "  Shows this help message"
+	echo ""
+	echo " version:"
+	echo "  Shows the version"
+	echo ""
+	echo " search:"
+	echo "  Searches [aptitude search] through repos to find packages"
 	echo ""
 	echo " install:"
 	echo "  Installs [aptitude install] new packages from repos"
@@ -72,8 +79,22 @@ if [ $snaptcomm = "help" ]; then
 	helpmsg
 
 	exit
-elif [ condition ]; then
+elif [ $snaptcomm = "version" ]; then
 	echo snapt $version
+
+	exit
+elif [[ $snaptcomm = "search" ]]; then
+	# Check for root
+	if [ "$EUID" -eq 0 ]; then
+		shift
+		aptitude update 	# Run aptitude update if root
+		aptcomm="aptitude search $*"
+
+		exit
+	else
+		shift
+		aptcomm="aptitude search $*"
+	fi
 
 	exit
 elif [ $snaptcomm = "install" ]; then
