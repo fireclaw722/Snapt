@@ -66,7 +66,7 @@ command -v aptitude >/dev/null 2>&1 || { echo >&2 "'aptitude' is required, pleas
 # Snapper is required. If not installed, Abort
 command -v snapper >/dev/null 2>&1 || { echo >&2 "'snapper' is required, please install it. Aborting."; exit 1; }
 
-# No Arguments && Command: [help]
+# No Arguments
 if [ "$#" -eq 0 ]; then
 	echo "Error: Requires Arguments"
 	echo ""
@@ -74,6 +74,7 @@ if [ "$#" -eq 0 ]; then
 	exit
 fi
 
+# Individual Commands
 if [ $snaptcomm = "help" ]; then
 	helphead
 	helpmsg
