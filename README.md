@@ -7,24 +7,26 @@ A portable set of BASH scripts to package managers with the openSUSE developed s
 * snapper
 	* with a BTRFS install
 * Package Managers
-	* Aptitude
+	* aptitude
 	* DNF
 	* YUM
+	* pacman
+
 
 ## Snapt
 Integrates the Debian/Ubuntu package manager, `aptitude`.
 
 ## Snapum
-<strong><span style="color:red;">Not Yet Implemented</span></strong>
+<strong>Not Yet Implemented</strong>
 
 Integrates the RedHat-based package manager, `yum`.
 
 ## SNF
-<strong><span style="color:red;">Not Yet Implemented</span></strong>
+<strong>Not Yet Implemented</strong>
 
 Integrates the RedHat-based package manager, `dnf`.
 
 ## Snapman
-<strong><span style="color:red;">Not Yet Implemented</span></strong>
+<strong>Not Yet Implemented</strong>
 
 Integrates with the Arch package manager, `pacman`.
