@@ -1,4 +1,4 @@
-#!/usr/bin/env bash
+#!/usr/bin/env sh
 ## Variables ##
 
 # Set first first arg[] as <command>
