@@ -85,7 +85,7 @@ elif [ $comm = "version" ]; then
 	exit
 elif [[ $comm = "search" ]]; then
 	shift
-	yumcomm="yum search $*"
+	yum search $*
 
 	exit
 elif [ $comm = "install" ]; then
