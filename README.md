@@ -17,8 +17,6 @@ A portable set of BASH scripts to integrate package managers with the openSUSE d
 Integrates the Debian/Ubuntu package manager, `aptitude`.
 
 ## Snapum
-<strong>Not Yet Implemented</strong>
-
 Integrates the RedHat-based package manager, `yum`.
 
 ## SNF
