@@ -22,10 +22,10 @@ helphead(){
 	echo " help"
 	echo " version"
 	echo " search"
-	#echo " install"
-	#echo " erase"
-	#echo " remove"
-	#echo " upgrade"
+	echo " install"
+	echo " erase"
+	echo " remove"
+	echo " upgrade"
 	echo ""
 }
 
@@ -40,18 +40,18 @@ helpmsg() {
 	echo ""
 	echo " search:"
 	echo "  Searches [yum search] through repos to find packages"
-	#echo ""
-	#echo " install:"
-	#echo "  Installs [yum install] new packages from repos"
-	#echo ""
-	#echo " erase:"
-	#echo "  Uninstalls [yum erase] new packages from repos"
-	#echo ""
-	#echo " remove:"
-	#echo "  Uninstalls [yum remove] new packages from repos"
-	#echo ""
-	#echo " upgrade:"
-	#echo "  Upgrade packages to their newest versions [yum upgrade]"
+	echo ""
+	echo " install:"
+	echo "  Installs [yum install] new packages from repos"
+	echo ""
+	echo " erase:"
+	echo "  Uninstalls [yum erase] new packages from repos"
+	echo ""
+	echo " remove:"
+	echo "  Uninstalls [yum remove] new packages from repos"
+	echo ""
+	echo " upgrade:"
+	echo "  Upgrade packages to their newest versions [yum upgrade]"
 	echo ""
 }
 
@@ -129,7 +129,7 @@ elif [ $comm = "erase" ]; then
 		exit 1
 	fi
 
-	snapper -v create -d "snapt purge" --command "$yumcomm"
+	snapper -v create -d "snapum erase" --command "$yumcomm"
 
 	exit
 elif [ $comm = "remove" ]; then
@@ -143,7 +143,7 @@ elif [ $comm = "remove" ]; then
 
 	shift
 
-	yumcomm="aptitude remove $*"
+	yumcomm="yum remove $*"
 	aptitude update
 
 	# Must have package names to remove anything
@@ -152,7 +152,7 @@ elif [ $comm = "remove" ]; then
 		exit 1
 	fi
 
-	snapper -v create -d "snapt remove" --command "$yumcomm"
+	snapper -v create -d "snapum remove" --command "$yumcomm"
 
 	exit
 elif [ $comm = "upgrade" ]; then
@@ -165,10 +165,10 @@ elif [ $comm = "upgrade" ]; then
 	fi
 	shift
 
-	yumcomm="aptitude safe-upgrade $*"
+	yumcomm="yum upgrade $*"
 	aptitude update
 
-	snapper -v create -d "snapt upgrade" --command "$yumcomm"
+	snapper -v create -d "snapum upgrade" --command "$yumcomm"
 
 	exit
 else
