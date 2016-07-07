@@ -2,8 +2,8 @@
 
 ## Variables ##
 
-# Set first first arg[] as snapt <command>
-snaptcomm=$1
+# Set first first arg[] as <command>
+comm=$1
 
 # Set Version Number
 version="v0.2"
@@ -75,16 +75,16 @@ if [ "$#" -eq 0 ]; then
 fi
 
 # Individual Commands
-if [ $snaptcomm = "help" ]; then
+if [ $comm = "help" ]; then
 	helphead
 	helpmsg
 
 	exit
-elif [ $snaptcomm = "version" ]; then
+elif [ $comm = "version" ]; then
 	echo snapt $version
 
 	exit
-elif [[ $snaptcomm = "search" ]]; then
+elif [[ $comm = "search" ]]; then
 	# Check for root
 	if [ "$EUID" -eq 0 ]; then
 		shift
@@ -98,7 +98,7 @@ elif [[ $snaptcomm = "search" ]]; then
 	fi
 
 	exit
-elif [ $snaptcomm = "install" ]; then
+elif [ $comm = "install" ]; then
 	# Check for root privileges
 	if [ "$EUID" -ne 0 ]; then
 		echo "This command needs root privileges."
@@ -121,7 +121,7 @@ elif [ $snaptcomm = "install" ]; then
 	snapper -v create -d "snapt install" --command "$aptcomm"
 
 	exit
-elif [ $snaptcomm = "purge" ]; then
+elif [ $comm = "purge" ]; then
 	# Check for root privileges
 	if [ "$EUID" -ne 0 ]; then
 		echo "This command needs root privileges."
@@ -144,7 +144,7 @@ elif [ $snaptcomm = "purge" ]; then
 	snapper -v create -d "snapt purge" --command "$aptcomm"
 
 	exit
-elif [ $snaptcomm = "remove" ]; then
+elif [ $comm = "remove" ]; then
 	# Check for root privileges
 	if [ "$EUID" -ne 0 ]; then
 		echo "This command needs root privileges."
@@ -167,7 +167,7 @@ elif [ $snaptcomm = "remove" ]; then
 	snapper -v create -d "snapt remove" --command "$aptcomm"
 
 	exit
-elif [ $snaptcomm = "upgrade" ]; then
+elif [ $comm = "upgrade" ]; then
 	# Check for root privileges
 	if [ "$EUID" -ne 0 ]; then
 		echo "This command needs root privileges."
@@ -184,7 +184,7 @@ elif [ $snaptcomm = "upgrade" ]; then
 
 	exit
 else
-	echo "Error: Command <$snaptcomm> is not a functional command."
+	echo "Error: Command <$comm> is not a functional command."
 	echo ""
 	helphead
 
