@@ -1,7 +1,7 @@
 #!/usr/bin/env bash
 ## Variables ##
 
-# Set first first arg[] as snapt <command>
+# Set first first arg[] as <command>
 comm=$1
 
 # Set Version Number
@@ -21,7 +21,7 @@ helphead(){
 	echo "Available Commands:"
 	echo " help"
 	echo " version"
-	#echo " search"
+	echo " search"
 	#echo " install"
 	#echo " erase"
 	#echo " remove"
@@ -37,9 +37,9 @@ helpmsg() {
 	echo ""
 	echo " version:"
 	echo "  Shows the version"
-	#echo ""
-	#echo " search:"
-	#echo "  Searches [yum search] through repos to find packages"
+	echo ""
+	echo " search:"
+	echo "  Searches [yum search] through repos to find packages"
 	#echo ""
 	#echo " install:"
 	#echo "  Installs [yum install] new packages from repos"

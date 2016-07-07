@@ -89,12 +89,12 @@ elif [[ $comm = "search" ]]; then
 	if [ "$EUID" -eq 0 ]; then
 		shift
 		aptitude update 	# Run aptitude update if root
-		aptcomm="aptitude search $*"
+		aptitude search $*
 
 		exit
 	else
 		shift
-		aptcomm="aptitude search $*"
+		aptitude search $*
 	fi
 
 	exit
