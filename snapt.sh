@@ -86,15 +86,17 @@ elif [ $comm = "version" ]; then
 	exit
 elif [ $comm = "search" ]; then
 	# Check for root
-	if [ "$EUID" -eq 0 ]; then
+	if [ "$EUID" -ne 0 ]; then
 		shift
-		aptitude update 	# Run aptitude update if root
 		aptitude search $*
 
 		exit
 	else
 		shift
+		aptitude update 	# Run aptitude update if root
 		aptitude search $*
+
+		exit
 	fi
 
 	exit
