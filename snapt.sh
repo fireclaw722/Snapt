@@ -84,7 +84,7 @@ elif [ $comm = "version" ]; then
 	echo snapt $version
 
 	exit
-elif [[ $comm = "search" ]]; then
+elif [ $comm = "search" ]; then
 	# Check for root
 	if [ "$EUID" -eq 0 ]; then
 		shift
