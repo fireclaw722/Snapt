@@ -6,7 +6,7 @@
 comm=$1
 
 # Set Version Number
-version="v0.3.2"
+version="v0.4"
 
 ## Functions ##
 
@@ -23,6 +23,7 @@ helphead(){
 	echo " help"
 	echo " version"
 	echo " search"
+	echo " list"
 	echo " install"
 	echo " purge"
 	echo " remove"
@@ -41,6 +42,9 @@ helpmsg() {
 	echo ""
 	echo " search:"
 	echo "  Searches [aptitude search] through repos to find packages"
+	echo ""
+	echo " list:"
+	echo "  Lists [snapper list] all snapshots"
 	echo ""
 	echo " install:"
 	echo "  Installs [aptitude install] new packages from repos"
@@ -100,6 +104,18 @@ elif [ $comm = "search" ]; then
 	fi
 
 	exit
+elif [ $comm = "list" ]; then
+	# Check for root privileges
+	if [ "$EUID" -ne 0 ]; then
+		echo "This command needs root privileges."
+		echo "Please re-run using root privileges"
+
+		exit 1
+	fi
+	shift
+
+	snapper list $*
+
 elif [ $comm = "install" ]; then
 	# Check for root privileges
 	if [ "$EUID" -ne 0 ]; then
