@@ -15,9 +15,26 @@ A portable set of BASH scripts to integrate package managers with the openSUSE d
 
 ## Snapt
 Integrates the Debian/Ubuntu package manager, `aptitude`.
+### Commands
+* help
+* version
+* list [`snapper list`]
+* search [`aptitude search`]
+* install [`aptitude install`]
+* purge [`aptitude purge`]
+* remove [`aptitude remove`]
+* upgrade [`aptitude safe-upgrade`]
 
 ## Snapum
 Integrates the RedHat-based package manager, `yum`.
+### Commands
+* help
+* version
+* search [`yum search`]
+* install [`yum install`]
+* purge [`yum erase`]
+* remove [`yum remove`]
+* upgrade [`yum upgrade`]
 
 ## SNF
 <strong>Not Yet Implemented</strong>
