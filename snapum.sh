@@ -6,7 +6,7 @@
 comm=$1
 
 # Set Version Number
-version="v0.1.1"
+version="v0.1.2"
 
 ## Functions ##
 
@@ -61,7 +61,7 @@ helpmsg() {
 # Force non-error fails to return as error
 set -e
 
-# Aptitude is required. If not installed, Abort
+# Yum is required. If not installed, Abort
 command -v yum >/dev/null 2>&1 || { echo >&2 "'yum' is required, please install it. Aborting."; exit 1; }
 # Snapper is required. If not installed, Abort
 command -v snapper >/dev/null 2>&1 || { echo >&2 "'snapper' is required, please install it. Aborting."; exit 1; }
@@ -145,7 +145,6 @@ elif [ $comm = "remove" ]; then
 	shift
 
 	yumcomm="yum remove $*"
-	aptitude update
 
 	# Must have package names to remove anything
 	if [ "$#" -eq 0 ]; then
@@ -167,7 +166,6 @@ elif [ $comm = "upgrade" ]; then
 	shift
 
 	yumcomm="yum upgrade $*"
-	aptitude update
 
 	snapper -v create -d "snapum upgrade" --command "$yumcomm"
 

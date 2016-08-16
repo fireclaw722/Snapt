@@ -6,7 +6,7 @@
 comm=$1
 
 # Set Version Number
-version="v0.1"
+version="v0.1.1"
 
 ## Functions ##
 
@@ -15,7 +15,7 @@ helphead(){
 	echo $version
 	echo "Usage: snf <command>"
 	echo ""
-	echo "Snapum is a script designed to run snapper and dnf in conjunction"
+	echo "SNF is a script designed to run snapper and dnf in conjunction"
 	echo "for installing/removing/updating packages using [snapper --command] to"
 	echo "auto-create --pre and --post btrfs snapshots."
 	echo ""
@@ -32,7 +32,7 @@ helphead(){
 
 # Help Message fn()
 helpmsg() {
-	echo "Snapum Command info:"
+	echo "SNF Command info:"
 	echo " help:"
 	echo "  Shows this help message"
 	echo ""
@@ -61,7 +61,7 @@ helpmsg() {
 # Force non-error fails to return as error
 set -e
 
-# Aptitude is required. If not installed, Abort
+# DNF is required. If not installed, Abort
 command -v dnf >/dev/null 2>&1 || { echo >&2 "'dnf' is required, please install it. Aborting."; exit 1; }
 # Snapper is required. If not installed, Abort
 command -v snapper >/dev/null 2>&1 || { echo >&2 "'snapper' is required, please install it. Aborting."; exit 1; }
@@ -81,7 +81,7 @@ if [ $comm = "help" ]; then
 
 	exit
 elif [ $comm = "version" ]; then
-	echo snapum $version
+	echo snf $version
 
 	exit
 elif [[ $comm = "search" ]]; then
@@ -108,7 +108,7 @@ elif [ $comm = "install" ]; then
 		exit 1
 	fi
 
-	snapper -v create -d "snapum install" --command "$dnfcomm"
+	snapper -v create -d "SNF install" --command "$dnfcomm"
 
 	exit
 elif [ $comm = "erase" ]; then
@@ -130,7 +130,7 @@ elif [ $comm = "erase" ]; then
 		exit 1
 	fi
 
-	snapper -v create -d "snapum erase" --command "$dnfcomm"
+	snapper -v create -d "SNF erase" --command "$dnfcomm"
 
 	exit
 elif [ $comm = "remove" ]; then
@@ -145,7 +145,6 @@ elif [ $comm = "remove" ]; then
 	shift
 
 	dnfcomm="dnf remove $*"
-	aptitude update
 
 	# Must have package names to remove anything
 	if [ "$#" -eq 0 ]; then
@@ -153,7 +152,7 @@ elif [ $comm = "remove" ]; then
 		exit 1
 	fi
 
-	snapper -v create -d "snapum remove" --command "$dnfcomm"
+	snapper -v create -d "SNF remove" --command "$dnfcomm"
 
 	exit
 elif [ $comm = "upgrade" ]; then
@@ -167,9 +166,8 @@ elif [ $comm = "upgrade" ]; then
 	shift
 
 	dnfcomm="dnf upgrade $*"
-	aptitude update
 
-	snapper -v create -d "snapum upgrade" --command "$dnfcomm"
+	snapper -v create -d "SNF upgrade" --command "$dnfcomm"
 
 	exit
 else
