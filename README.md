@@ -37,9 +37,15 @@ Integrates the RedHat-based package manager, `yum`.
 * upgrade [`yum upgrade`]
 
 ## SNF
-<strong>Not Yet Implemented</strong>
-
 Integrates the RedHat-based package manager, `dnf`.
+### Commands
+* help
+* version
+* search [`dnf search`]
+* install [`dnf install`]
+* purge [`dnf erase`]
+* remove [`dnf remove`]
+* upgrade [`dnf upgrade`]
 
 ## Snapman
 <strong>Not Yet Implemented</strong>
