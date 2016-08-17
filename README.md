@@ -32,7 +32,7 @@ Integrates the RedHat-based package manager, `yum`.
 * version
 * search [`yum search`]
 * install [`yum install`]
-* purge [`yum erase`]
+* erase [`yum erase`]
 * remove [`yum remove`]
 * upgrade [`yum upgrade`]
 
@@ -43,7 +43,7 @@ Integrates the RedHat-based package manager, `dnf`.
 * version
 * search [`dnf search`]
 * install [`dnf install`]
-* purge [`dnf erase`]
+* erase [`dnf erase`]
 * remove [`dnf remove`]
 * upgrade [`dnf upgrade`]
 
