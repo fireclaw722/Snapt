@@ -1,4 +1,4 @@
-# Snap PKG
+# Snapper PKG
 A portable set of BASH scripts to integrate package managers with the openSUSE developed snapper. They are currently only functioning as a wrapper.
 
 ## Requirements
