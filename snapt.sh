@@ -116,6 +116,7 @@ elif [ $comm = "list" ]; then
 
 	snapper list $*
 
+	exit
 elif [ $comm = "install" ]; then
 	# Check for root privileges
 	if [ "$EUID" -ne 0 ]; then
