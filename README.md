@@ -50,6 +50,7 @@ Integrates the RedHat-based package manager, `dnf`.
 * erase [`dnf erase`]
 * remove [`dnf remove`]
 * upgrade [`dnf upgrade`]
+* history [`dnf history`]
 
 ## Snapman
 <strong>Not Yet Implemented</strong>

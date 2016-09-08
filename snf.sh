@@ -6,7 +6,7 @@
 comm=$1
 
 # Set Version Number
-version="v0.1.1"
+version="v0.2"
 
 ## Functions ##
 
@@ -28,6 +28,7 @@ helphead(){
 	echo " erase"
 	echo " remove"
 	echo " upgrade"
+	echo " history"
 	echo ""
 }
 
@@ -57,6 +58,9 @@ helpmsg() {
 	echo ""
 	echo " upgrade:"
 	echo "  Upgrade packages to their newest versions [dnf upgrade]"
+	echo ""
+	echo " history:"
+	echo "  Manage and List DNF history [dnf history]"
 	echo ""
 }
 
@@ -185,6 +189,25 @@ elif [ $comm = "upgrade" ]; then
 	dnfcomm="dnf upgrade $*"
 
 	snapper -v create -d "SNF upgrade" --command "$dnfcomm"
+
+	exit
+elif [ $comm = "history" ]; then
+	# Check for root privileges
+	if [ "$EUID" -ne 0 ]; then
+		echo "This command needs root privileges."
+		echo "Please re-run using root privileges"
+
+		exit 1
+	fi
+	shift
+
+	# Don't create snapshot for listing history
+	if [ $1 = "list" ]; then
+		dnf history list
+	else
+		dnfcomm="dnf history $*"
+		snapper -v create -d "SNF config" --command "$dnfcomm"
+	fi
 
 	exit
 else
