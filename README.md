@@ -47,6 +47,7 @@ Integrates the RedHat-based package manager, `dnf`.
 * list [`snapper list`]
 * search [`dnf search`]
 * install [`dnf install`]
+* reinstall [`dnf reinstall`]
 * erase [`dnf erase`]
 * remove [`dnf remove`]
 * upgrade [`dnf upgrade`]
