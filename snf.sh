@@ -22,8 +22,8 @@ helphead(){
 	echo "Available Commands:"
 	echo " help"
 	echo " version"
+  echo " list"
 	echo " search"
-	echo " list"
 	echo " install"
 	echo " erase"
 	echo " remove"
@@ -40,11 +40,11 @@ helpmsg() {
 	echo " version:"
 	echo "  Shows the version"
 	echo ""
-	echo " search:"
-	echo "  Searches [dnf search] through repos to find packages"
-	echo ""
 	echo " list:"
 	echo "  Lists [snapper list] all snapshots"
+	echo ""
+	echo " search:"
+	echo "  Searches [dnf search] through repos to find packages"
 	echo ""
 	echo " install:"
 	echo "  Installs [dnf install] new packages from repos"
@@ -88,11 +88,6 @@ elif [ $comm = "version" ]; then
 	echo snf $version
 
 	exit
-elif [[ $comm = "search" ]]; then
-	shift
-	dnf search $*
-
-	exit
 elif [ $comm = "list" ]; then
 	# Check for root privileges
 	if [ "$EUID" -ne 0 ]; then
@@ -104,6 +99,11 @@ elif [ $comm = "list" ]; then
 	shift
 
 	snapper list $*
+
+	exit
+elif [[ $comm = "search" ]]; then
+	shift
+	dnf search $*
 
 	exit
 elif [ $comm = "install" ]; then
