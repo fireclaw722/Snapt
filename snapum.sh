@@ -39,6 +39,9 @@ helpmsg() {
 	echo " version:"
 	echo "  Shows the version"
 	echo ""
+	echo " list:"
+	echo "  Lists [snapper list] all snapshots"
+	echo ""
 	echo " search:"
 	echo "  Searches [yum search] through repos to find packages"
 	echo ""
@@ -82,6 +85,19 @@ if [ $comm = "help" ]; then
 	exit
 elif [ $comm = "version" ]; then
 	echo snapum $version
+
+	exit
+elif [ $comm = "list" ]; then
+	# Check for root privileges
+	if [ "$EUID" -ne 0 ]; then
+		echo "This command needs root privileges."
+		echo "Please re-run using root privileges"
+
+		exit 1
+	fi
+	shift
+
+	snapper list $*
 
 	exit
 elif [[ $comm = "search" ]]; then

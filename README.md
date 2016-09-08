@@ -32,6 +32,7 @@ Integrates the RedHat-based package manager, `yum`.
 ### Commands
 * help
 * version
+* list [`snapper list`]
 * search [`yum search`]
 * install [`yum install`]
 * erase [`yum erase`]
