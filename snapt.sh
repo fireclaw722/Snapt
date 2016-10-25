@@ -6,7 +6,7 @@
 comm=$1
 
 # Set Version Number
-version="v0.4.1"
+version="v0.4.2"
 
 ## Functions ##
 
@@ -114,7 +114,7 @@ elif [ $comm = "list" ]; then
 	fi
 	shift
 
-	snapper list $*
+	snapper list
 
 	exit
 elif [ $comm = "install" ]; then
