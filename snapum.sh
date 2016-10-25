@@ -6,7 +6,7 @@
 comm=$1
 
 # Set Version Number
-version="v0.2"
+version="v0.2.1"
 
 ## Functions ##
 
@@ -22,6 +22,7 @@ helphead(){
 	echo "Available Commands:"
 	echo " help"
 	echo " version"
+	echo " list"
 	echo " search"
 	echo " install"
 	echo " erase"
