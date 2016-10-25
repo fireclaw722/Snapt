@@ -106,7 +106,7 @@ elif [ $comm = "list" ]; then
 	fi
 	shift
 
-	snapper list $*
+	snapper list
 
 	exit
 elif [[ $comm = "search" ]]; then
