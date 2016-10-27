@@ -101,7 +101,7 @@ elif [ $comm = "version" ]; then
 	echo snf $version
 
 	exit
-elif [ $comm = "list" ]; then
+elif [ $comm = "snapshot" ]; then
 	# Check for root privileges
 	if [ "$EUID" -ne 0 ]; then
 		echo "This command needs root privileges."
