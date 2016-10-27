@@ -12,7 +12,6 @@ They are also completely independent of each other. Each script should do the sa
 	* aptitude
 	* DNF
 	* YUM
-	* pacman
 
 
 ## Snapt
@@ -20,7 +19,10 @@ Integrates the Debian/Ubuntu package manager, `aptitude`.
 ### Commands
 * help
 * version
-* list [`snapper list`]
+* snapshot [`snapper`]
+   * snapshot list [`snapper list`]
+   * snapshot delete [`snapper delete`]
+   * snapshot status [`snapper status`]
 * search [`aptitude search`]
 * install [`aptitude install`]
 * purge [`aptitude purge`]
@@ -32,7 +34,10 @@ Integrates the RedHat-based package manager, `yum`.
 ### Commands
 * help
 * version
-* list [`snapper list`]
+* snapshot [`snapper`]
+   * snapshot list [`snapper list`]
+   * snapshot delete [`snapper delete`]
+   * snapshot status [`snapper status`]
 * search [`yum search`]
 * install [`yum install`]
 * erase [`yum erase`]
@@ -44,7 +49,10 @@ Integrates the RedHat-based package manager, `dnf`.
 ### Commands
 * help
 * version
-* list [`snapper list`]
+* snapshot [`snapper`]
+   * snapshot list [`snapper list`]
+   * snapshot delete [`snapper delete`]
+   * snapshot status [`snapper status`]
 * search [`dnf search`]
 * install [`dnf install`]
 * reinstall [`dnf reinstall`]
