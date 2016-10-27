@@ -93,22 +93,6 @@ elif [ $comm = "version" ]; then
 	echo snapt $version
 
 	exit
-elif [ $comm = "search" ]; then
-	# Check for root
-	if [ "$EUID" -ne 0 ]; then
-		shift
-		aptitude search $*
-
-		exit
-	else
-		shift
-		aptitude update 	# Run aptitude update if root
-		aptitude search $*
-
-		exit
-	fi
-
-	exit
 elif [ $comm = "snapshot" ]; then
 	# Check for root privileges
 	if [ "$EUID" -ne 0 ]; then
@@ -129,6 +113,22 @@ elif [ $comm = "snapshot" ]; then
 	elif [ $1 = "status" ]
 		shift
 		snapper status $*
+	fi
+
+	exit
+elif [ $comm = "search" ]; then
+	# Check for root
+	if [ "$EUID" -ne 0 ]; then
+		shift
+		aptitude search $*
+
+		exit
+	else
+		shift
+		aptitude update 	# Run aptitude update if root
+		aptitude search $*
+
+		exit
 	fi
 
 	exit
