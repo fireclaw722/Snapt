@@ -44,7 +44,12 @@ helpmsg() {
 	echo "  Searches [aptitude search] through repos to find packages"
 	echo ""
 	echo " snapshot:"
-	echo "  Allows interfacing with snapshots [snapper]"
+	echo "  snapshot list"
+	echo "   Lists [snapper list] snapshots by number"
+	echo "  snapshot delete"
+	echo "   Allows for deleting [snapper delete] snapshots"
+	echo "  snapshot status"
+	echo "   Shows changes between snapshots [snapper status]"
 	echo ""
 	echo " install:"
 	echo "  Installs [aptitude install] new packages from repos"
@@ -115,7 +120,16 @@ elif [ $comm = "snapshot" ]; then
 	
 	shift
 	
-	snapper $*
+	if [ $1 = "list" ]
+		shift
+		snapper list $*
+	elif [ $1 = "delete"]
+		shift
+		snapper delete $*
+	elif [ $1 = "status" ]
+		shift
+		snapper status $*
+	fi
 
 	exit
 elif [ $comm = "install" ]; then
