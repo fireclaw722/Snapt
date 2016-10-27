@@ -23,7 +23,7 @@ helphead(){
 	echo " help"
 	echo " version"
 	echo " search"
-	echo " list"
+	echo " snapshot"
 	echo " install"
 	echo " purge"
 	echo " remove"
@@ -43,8 +43,8 @@ helpmsg() {
 	echo " search:"
 	echo "  Searches [aptitude search] through repos to find packages"
 	echo ""
-	echo " list:"
-	echo "  Lists [snapper list] all snapshots"
+	echo " snapshot:"
+	echo "  Allows interfacing with snapshots [snapper]"
 	echo ""
 	echo " install:"
 	echo "  Installs [aptitude install] new packages from repos"
@@ -104,7 +104,7 @@ elif [ $comm = "search" ]; then
 	fi
 
 	exit
-elif [ $comm = "list" ]; then
+elif [ $comm = "snapshot" ]; then
 	# Check for root privileges
 	if [ "$EUID" -ne 0 ]; then
 		echo "This command needs root privileges."
@@ -112,9 +112,10 @@ elif [ $comm = "list" ]; then
 
 		exit 1
 	fi
+	
 	shift
-
-	snapper list
+	
+	snapper $*
 
 	exit
 elif [ $comm = "install" ]; then
