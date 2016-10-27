@@ -22,7 +22,7 @@ helphead(){
 	echo "Available Commands:"
 	echo " help"
 	echo " version"
-  echo " list"
+	echo " list"
 	echo " search"
 	echo " install"
 	echo " reinstall"
