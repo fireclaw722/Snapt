@@ -28,6 +28,7 @@ helphead(){
 	echo " purge"
 	echo " remove"
 	echo " upgrade"
+	echo " reinstall"
 	echo ""
 }
 
@@ -62,6 +63,9 @@ helpmsg() {
 	echo ""
 	echo " upgrade:"
 	echo "  Upgrade packages to their newest versions [aptitude safe-upgrade]"
+	echo ""
+	echo " reinstall:"
+	echo "  Reinstalls packages [aptitude reinstall]"
 	echo ""
 }
 
