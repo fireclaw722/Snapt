@@ -6,7 +6,7 @@
 comm=$1
 
 # Set Version Number
-version="v0.4.2"
+version="v0.5"
 
 ## Functions ##
 
@@ -107,7 +107,7 @@ elif [ $comm = "snapshot" ]; then
 	if [ $1 = "list" ]
 		shift
 		snapper list $*
-	elif [ $1 = "delete"]
+	elif [ $1 = "delete" ]
 		shift
 		snapper delete $*
 	elif [ $1 = "status" ]
