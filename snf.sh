@@ -25,7 +25,6 @@ helphead(){
 	echo " snapshot"
 	echo " search"
 	echo " install"
-	echo " reinstall"
 	echo " erase"
 	echo " remove"
 	echo " upgrade"
@@ -57,8 +56,6 @@ helpmsg() {
 	echo " install:"
 	echo "  Installs [dnf install] new packages from repos"
 	echo ""
-	echo " reinstall:"
-	echo "  Reinstalls [dnf reinstall] packages from repos"
 	echo ""
 	echo " erase:"
 	echo "  Uninstalls [dnf erase] packages from repos"
@@ -73,7 +70,7 @@ helpmsg() {
 	echo "  Manage and List DNF history [dnf history]"
 	echo ""
 	echo " reinstall:"
-	echo "  Reinstalls [dnf reinstall] selected packages"
+	echo "  Reinstalls [dnf reinstall] packages from repos"
 	echo ""
 }
 
@@ -155,28 +152,6 @@ elif [ $comm = "install" ]; then
 	fi
 
 	snapper -v create -d "SNF install" --command "$dnfcomm"
-
-	exit
-elif [ $comm = "reinstall" ]; then
-	# Check for root privileges
-	if [ "$EUID" -ne 0 ]; then
-		echo "This command needs root privileges."
-		echo "Please re-run using root privileges"
-
-		exit 1
-	fi
-
-	shift
-
-	dnfcomm="dnf reinstall $*"
-
-	# Must have package names to install anything
-	if [ "$#" -eq 0 ]; then
-		echo "Requires package name to reinstall"
-		exit 1
-	fi
-
-	snapper -v create -d "SNF reinstall" --command "$dnfcomm"
 
 	exit
 elif [ $comm = "erase" ]; then
@@ -265,11 +240,18 @@ elif [ $comm = "reinstall" ]; then
 
 		exit 1
 	fi
+
 	shift
 
 	dnfcomm="dnf reinstall $*"
 
-	snapper -v create -d "snf reinstall" --command "$dnfcomm"
+	# Must have package names to install anything
+	if [ "$#" -eq 0 ]; then
+		echo "Requires package name to reinstall"
+		exit 1
+	fi
+
+	snapper -v create -d "SNF reinstall" --command "$dnfcomm"
 
 	exit
 else
