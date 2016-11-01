@@ -6,7 +6,7 @@
 comm=$1
 
 # Set Version Number
-version="v0.5.2"
+version="v0.6"
 
 ## Functions ##
 
