@@ -223,6 +223,22 @@ elif [ $comm = "upgrade" ]; then
 	snapper -v create -d "snapt upgrade" --command "$aptcomm"
 
 	exit
+elif [ $comm = "reinstall" ]; then
+	# Check for root privileges
+	if [ "$EUID" -ne 0 ]; then
+		echo "This command needs root privileges."
+		echo "Please re-run using root privileges"
+
+		exit 1
+	fi
+	shift
+
+	aptcomm="aptitude reinstall $*"
+	aptitude update
+
+	snapper -v create -d "snapt reinstall" --command "$aptcomm"
+
+	exit
 else
 	echo "Error: Command <$comm> is not a functional command."
 	echo ""
