@@ -6,7 +6,7 @@
 comm=$1
 
 # Set Version Number
-version="v0.5"
+version="v0.5.1"
 
 ## Functions ##
 
@@ -101,9 +101,9 @@ elif [ $comm = "snapshot" ]; then
 
 		exit 1
 	fi
-	
+
 	shift
-	
+
 	if [ $1 = "list" ]
 		shift
 		snapper list $*
