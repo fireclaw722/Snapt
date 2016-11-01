@@ -257,6 +257,21 @@ elif [ $comm = "history" ]; then
 	fi
 
 	exit
+elif [ $comm = "reinstall" ]; then
+	# Check for root privileges
+	if [ "$EUID" -ne 0 ]; then
+		echo "This command needs root privileges."
+		echo "Please re-run using root privileges"
+
+		exit 1
+	fi
+	shift
+
+	dnfcomm="dnf reinstall $*"
+
+	snapper -v create -d "snf reinstall" --command "$dnfcomm"
+
+	exit
 else
 	echo "Error: Command <$comm> is not a functional command."
 	echo ""
