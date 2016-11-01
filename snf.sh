@@ -30,6 +30,7 @@ helphead(){
 	echo " remove"
 	echo " upgrade"
 	echo " history"
+	echo " reinstall"
 	echo ""
 }
 
@@ -70,6 +71,9 @@ helpmsg() {
 	echo ""
 	echo " history:"
 	echo "  Manage and List DNF history [dnf history]"
+	echo ""
+	echo " reinstall:"
+	echo "  Reinstalls [dnf reinstall] selected packages"
 	echo ""
 }
 
