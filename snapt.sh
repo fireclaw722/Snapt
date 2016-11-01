@@ -117,7 +117,7 @@ elif [ $comm = "snapshot" ]; then
 	elif [ $1 = "status" ]; then
 		shift
 		snapper status $*
-	elif
+	else
 		echo "Unsupported snapshot command"
 	fi
 
