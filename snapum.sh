@@ -28,6 +28,7 @@ helphead(){
 	echo " erase"
 	echo " remove"
 	echo " upgrade"
+	echo " reinstall"
 	echo ""
 }
 
@@ -62,6 +63,9 @@ helpmsg() {
 	echo ""
 	echo " upgrade:"
 	echo "  Upgrade packages to their newest versions [yum upgrade]"
+	echo ""
+	echo " reinstall:"
+	echo "  Reinstalls [yum reinstall] packages from repos"
 	echo ""
 }
 
