@@ -44,6 +44,7 @@ Integrates the RedHat-based package manager, `yum`.
 * erase [`yum erase`]
 * remove [`yum remove`]
 * upgrade [`yum upgrade`]
+* reinstall [`yum reinstall`]
 
 ## SNF
 Integrates the RedHat-based package manager, `dnf`.
