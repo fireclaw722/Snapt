@@ -208,6 +208,25 @@ elif [ $comm = "upgrade" ]; then
 	snapper -v create -d "snapum upgrade" --command "$yumcomm"
 
 	exit
+elif [ $comm = "reinstall" ]; then
+	# Check for root privileges
+	if [ "$EUID" -ne 0 ]; then
+		echo "This command needs root privileges."
+		echo "Please re-run using root privileges"
+
+		exit 1
+	fi
+	shift
+
+	yumcomm="yum reinstall $*"
+
+	# Must have package names to reinstall
+	if [ "$#" -eq 0 ]; then
+		echo "Requires package name to reinstall"
+		exit 1
+	fi
+
+	exit
 else
 	echo "Error: Command <$comm> is not a functional command."
 	echo ""
