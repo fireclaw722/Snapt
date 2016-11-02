@@ -233,6 +233,11 @@ elif [ $comm = "reinstall" ]; then
 	fi
 	shift
 
+	if [ "$#" -eq 0 ]; then
+		echo "Requires package name to reinstall"
+		exit 1
+	fi
+
 	aptcomm="aptitude reinstall $*"
 	aptitude update
 
