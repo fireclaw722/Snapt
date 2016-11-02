@@ -28,6 +28,7 @@ Integrates the Debian/Ubuntu package manager, `aptitude`.
 * purge [`aptitude purge`]
 * remove [`aptitude remove`]
 * upgrade [`aptitude safe-upgrade`]
+* reinstall [`aptitude reinstall`]
 
 ## Snapum
 Integrates the RedHat-based package manager, `yum`.
@@ -60,6 +61,7 @@ Integrates the RedHat-based package manager, `dnf`.
 * remove [`dnf remove`]
 * upgrade [`dnf upgrade`]
 * history [`dnf history`]
+* reinstall [`dnf reinstall`]
 
 ## Snapman
 <strong>Not Yet Implemented</strong>

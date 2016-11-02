@@ -6,7 +6,7 @@
 comm=$1
 
 # Set Version Number
-version="v0.3.2"
+version="v0.4"
 
 ## Functions ##
 
@@ -28,6 +28,7 @@ helphead(){
 	echo " erase"
 	echo " remove"
 	echo " upgrade"
+	echo " reinstall"
 	echo ""
 }
 
@@ -62,6 +63,9 @@ helpmsg() {
 	echo ""
 	echo " upgrade:"
 	echo "  Upgrade packages to their newest versions [yum upgrade]"
+	echo ""
+	echo " reinstall:"
+	echo "  Reinstalls [yum reinstall] packages from repos"
 	echo ""
 }
 
@@ -202,6 +206,25 @@ elif [ $comm = "upgrade" ]; then
 	yumcomm="yum upgrade $*"
 
 	snapper -v create -d "snapum upgrade" --command "$yumcomm"
+
+	exit
+elif [ $comm = "reinstall" ]; then
+	# Check for root privileges
+	if [ "$EUID" -ne 0 ]; then
+		echo "This command needs root privileges."
+		echo "Please re-run using root privileges"
+
+		exit 1
+	fi
+	shift
+
+	yumcomm="yum reinstall $*"
+
+	# Must have package names to reinstall
+	if [ "$#" -eq 0 ]; then
+		echo "Requires package name to reinstall"
+		exit 1
+	fi
 
 	exit
 else

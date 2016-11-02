@@ -6,7 +6,7 @@
 comm=$1
 
 # Set Version Number
-version="v0.5.2"
+version="v0.6"
 
 ## Functions ##
 
@@ -28,6 +28,7 @@ helphead(){
 	echo " purge"
 	echo " remove"
 	echo " upgrade"
+	echo " reinstall"
 	echo ""
 }
 
@@ -62,6 +63,9 @@ helpmsg() {
 	echo ""
 	echo " upgrade:"
 	echo "  Upgrade packages to their newest versions [aptitude safe-upgrade]"
+	echo ""
+	echo " reinstall:"
+	echo "  Reinstalls packages [aptitude reinstall]"
 	echo ""
 }
 
@@ -217,6 +221,27 @@ elif [ $comm = "upgrade" ]; then
 	aptitude update
 
 	snapper -v create -d "snapt upgrade" --command "$aptcomm"
+
+	exit
+elif [ $comm = "reinstall" ]; then
+	# Check for root privileges
+	if [ "$EUID" -ne 0 ]; then
+		echo "This command needs root privileges."
+		echo "Please re-run using root privileges"
+
+		exit 1
+	fi
+	shift
+
+	if [ "$#" -eq 0 ]; then
+		echo "Requires package name to reinstall"
+		exit 1
+	fi
+
+	aptcomm="aptitude reinstall $*"
+	aptitude update
+
+	snapper -v create -d "snapt reinstall" --command "$aptcomm"
 
 	exit
 else
