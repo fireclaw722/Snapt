@@ -23,6 +23,8 @@ Integrates the Debian/Ubuntu package manager, `aptitude`.
    * snapshot list [`snapper list`]
    * snapshot delete [`snapper delete`]
    * snapshot status [`snapper status`]
+* repo
+   * repo add [`add-apt-repository`]
 * search [`aptitude search`]
 * install [`aptitude install`]
 * purge [`aptitude purge`]
