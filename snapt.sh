@@ -24,6 +24,7 @@ helphead(){
 	echo " version"
 	echo " search"
 	echo " snapshot"
+	echo " repo"
 	echo " install"
 	echo " purge"
 	echo " remove"
@@ -51,6 +52,10 @@ helpmsg() {
 	echo "   Allows for deleting [snapper delete] snapshots"
 	echo "  snapshot status"
 	echo "   Shows changes between snapshots [snapper status]"
+	echo ""
+	echo " repo:"
+	echo "  repo add"
+	echo "   Adds [add-apt-repository] a PPA or other repository"
 	echo ""
 	echo " install:"
 	echo "  Installs [aptitude install] new packages from repos"
@@ -119,6 +124,25 @@ elif [ $comm = "snapshot" ]; then
 		snapper status $*
 	else
 		echo "Unsupported snapshot command"
+	fi
+
+	exit
+elif [ $comm = "repo" ]; then
+	# Check for root privileges
+	if [ "$EUID" -ne 0 ]; then
+		echo "This command needs root privileges."
+		echo "Please re-run using root privileges"
+
+		exit 1
+	fi
+
+	shift
+
+	if [ $1 = "add" ]; then
+		shift
+		snapper -v create -d "snapt repo add" --command "add-apt-repository $*"
+	else
+		echo "Unsupported repository command"
 	fi
 
 	exit
