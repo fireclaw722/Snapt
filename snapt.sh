@@ -143,6 +143,7 @@ elif [ $comm = "repo" ]; then
 		snapper -v create -d "snapt repo add" --command "add-apt-repository $*"
 	else
 		echo "Unsupported repository command"
+		exit 1
 	fi
 
 	exit
